@@ -37,51 +37,46 @@ function renderHero(data) {
   $("#closingText").textContent = data.closing?.text ?? "";
 }
 
-function renderMoments(moments) {
+function renderMoments(sections) {
   const grid = $("#momentsGrid");
   grid.innerHTML = "";
 
-  moments.forEach((m, idx) => {
-    const card = document.createElement("article");
-    card.className = "card";
-    card.setAttribute("data-aos", "fade-up");
-    card.setAttribute("data-aos-delay", String(Math.min(idx * 60, 240)));
+  (sections ?? []).forEach((section, sectionIdx) => {
+    const wrap = document.createElement("div");
+    wrap.className = "moments-section";
 
-    const tags = (m.tags ?? []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+    const heading = document.createElement("h3");
+    heading.className = "moments-section__title";
+    heading.textContent = section.title ?? `Top ${sectionIdx + 1}`;
+    wrap.appendChild(heading);
 
-    card.innerHTML = `
-      <a class="card__media glightbox" href="${escapeAttr(m.image)}" data-gallery="moments" data-title="${escapeAttr(m.title)}">
-        <span class="badge">TOP ${escapeHtml(String(m.rank ?? (idx + 1)))}</span>
-        <img src="${escapeAttr(m.image)}" alt="${escapeAttr(m.alt ?? m.title)}" loading="lazy" />
-      </a>
-      <div class="card__body">
-        <h3 class="card__title">${escapeHtml(m.title ?? "Momento")}</h3>
-        <p class="card__text">${escapeHtml(m.text ?? "")}</p>
-        <div class="card__tags">${tags}</div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
+    const sectionGrid = document.createElement("div");
+    sectionGrid.className = "grid";
 
-function renderTimeline(items) {
-  const list = $("#timelineList");
-  list.innerHTML = "";
+    (section.items ?? []).forEach((m, idx) => {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.setAttribute("data-aos", "fade-up");
+      card.setAttribute("data-aos-delay", String(Math.min(idx * 60, 240)));
 
-  items.forEach((it, idx) => {
-    const d = document.createElement("details");
-    d.className = "titem";
-    d.setAttribute("data-aos", "fade-up");
-    d.setAttribute("data-aos-delay", String(Math.min(idx * 60, 240)));
+      const tags = (m.tags ?? []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
 
-    const bullets = (it.bullets ?? []).map(b => `<li>${escapeHtml(b)}</li>`).join("");
+      card.innerHTML = `
+        <a class="card__media glightbox" href="${escapeAttr(m.image)}" data-gallery="moments" data-title="${escapeAttr(m.title)}">
+          <span class="badge">TOP ${escapeHtml(String(m.rank ?? (idx + 1)))}</span>
+          <img src="${escapeAttr(m.image)}" alt="${escapeAttr(m.alt ?? m.title)}" loading="lazy" />
+        </a>
+        <div class="card__body">
+          <h3 class="card__title">${escapeHtml(m.title ?? "Momento")}</h3>
+          <p class="card__text">${escapeHtml(m.text ?? "")}</p>
+          <div class="card__tags">${tags}</div>
+        </div>
+      `;
+      sectionGrid.appendChild(card);
+    });
 
-    d.innerHTML = `
-      <summary>${escapeHtml(it.month ?? "Mes")}</summary>
-      <div class="tmeta">📌 ${escapeHtml(String((it.bullets ?? []).length))} hitos</div>
-      <ul class="tbullets">${bullets}</ul>
-    `;
-    list.appendChild(d);
+    wrap.appendChild(sectionGrid);
+    grid.appendChild(wrap);
   });
 }
 
@@ -144,10 +139,10 @@ function renderVideos(videos) {
     card.setAttribute("data-aos-delay", String(Math.min(idx * 80, 240)));
 
     card.innerHTML = `
-      <video controls preload="metadata" poster="${escapeAttr(v.poster ?? "")}">
-        <source src="${escapeAttr(v.src)}" type="video/mp4" />
-        Tu navegador no soporta video HTML5.
-      </video>
+      <a class="video__link" href="${escapeAttr(v.url ?? "#")}" target="_blank" rel="noreferrer noopener">
+        <span class="video__label">▶ Ver en YouTube</span>
+        <span class="video__url">${escapeHtml(v.url ?? "")}</span>
+      </a>
       <p class="video__cap">${escapeHtml(v.caption ?? "")}</p>
     `;
     grid.appendChild(card);
@@ -192,18 +187,18 @@ function pickRandomMoment(moments) {
   const data = await loadData();
   renderHero(data);
 
-  renderMoments(data.moments ?? []);
-  renderTimeline(data.timeline ?? []);
+  const allMoments = (data.momentsSections ?? []).flatMap(section => section.items ?? []);
+  renderMoments(data.momentsSections ?? []);
   renderStats(data.stats ?? []);
   renderVideos(data.videos ?? []);
 
   const lightbox = GLightbox({ selector: ".glightbox", touchNavigation: true, loop: true });
 
   $("#shuffleMoment").addEventListener("click", () => {
-    const m = pickRandomMoment(data.moments ?? []);
+    const m = pickRandomMoment(allMoments);
     if (!m) return;
     // abre en lightbox el momento random
-    lightbox.openAt((data.moments ?? []).findIndex(x => x.image === m.image));
+    lightbox.openAt(allMoments.findIndex(x => x.image === m.image));
     toast(`Momento random: ${m.title}`);
   });
 })();
