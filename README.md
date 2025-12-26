@@ -1,2 +1,1 @@
-# finanzas-estudio
 # sabi-wrap
