@@ -3,7 +3,7 @@
   "hero": {
     "title": "Mi 2025 en Wrap",
     "subtitle": "Un resumen para compartir con amigos: momentos, mini-historias y un par de videos.",
-    "image": "assets/photos/momento-01.jpg",
+    "image": "assets/photos/principal.jpg",
     "imageAlt": "Foto principal del año"
   },
   "momentsSections": [
@@ -89,6 +89,14 @@
         },
         {
           "rank": 3,
+          "title": "Game night",
+          "text": "Competitivos pero felices.",
+          "image": "assets/photos/momentos-3-3.jpg",
+          "alt": "Foto de la noche de juegos",
+          "tags": ["juegos", "amigos"]
+        },
+        {
+          "rank": 4,
           "title": "Game night",
           "text": "Competitivos pero felices.",
           "image": "assets/photos/momentos-3-3.jpg",
