@@ -142,6 +142,24 @@ function renderStats(stats) {
   nums.forEach(n => io.observe(n));
 }
 
+function toYouTubeEmbed(url) {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtu.be")) {
+      const id = parsed.pathname.replace("/", "");
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    if (parsed.hostname.includes("youtube.com")) {
+      const id = parsed.searchParams.get("v");
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 function renderVideos(videos) {
   const grid = $("#videosGrid");
   grid.innerHTML = "";
@@ -152,11 +170,14 @@ function renderVideos(videos) {
     card.setAttribute("data-aos", "fade-up");
     card.setAttribute("data-aos-delay", String(Math.min(idx * 80, 240)));
 
+    const embedUrl = toYouTubeEmbed(v.url);
+    const fallbackText = embedUrl ? "" : `<p class="video__fallback">No pude embeber este video.</p>`;
+
     card.innerHTML = `
-      <a class="video__link" href="${escapeAttr(v.url ?? "#")}" target="_blank" rel="noreferrer noopener">
-        <span class="video__label">▶ Ver en YouTube</span>
-        <span class="video__url">${escapeHtml(v.url ?? "")}</span>
-      </a>
+      <div class="video__embed">
+        ${embedUrl ? `<iframe src="${escapeAttr(embedUrl)}" title="${escapeAttr(v.caption ?? "Video")}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>` : ""}
+      </div>
+      ${fallbackText}
       <p class="video__cap">${escapeHtml(v.caption ?? "")}</p>
     `;
     grid.appendChild(card);
