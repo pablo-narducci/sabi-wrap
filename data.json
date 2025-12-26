@@ -6,10 +6,10 @@
     "image": "assets/photos/momento-01.jpg",
     "imageAlt": "Foto principal del año"
   },
-  "momentsIntro": "Los highlights que explican mi año.",
   "momentsSections": [
     {
       "title": "Top Recitales",
+      "intro": "Los highlights que explican mi año.",
       "items": [
         {
           "rank": 1,
@@ -39,6 +39,7 @@
     },
     {
       "title": "Top Lugares",
+      "intro": "Postales que me marcaron durante el año.",
       "items": [
         {
           "rank": 1,
@@ -68,6 +69,7 @@
     },
     {
       "title": "Top Random",
+      "intro": "Momentos inesperados que sumaron magia.",
       "items": [
         {
           "rank": 1,
@@ -97,6 +99,7 @@
     },
     {
       "title": "Top Meriendas",
+      "intro": "Sabores que hicieron el año más dulce.",
       "items": [
         {
           "rank": 1,
@@ -126,6 +129,7 @@
     },
     {
       "title": "Top Naturaleza",
+      "intro": "Oxígeno puro y paisajes que recargan.",
       "items": [
         {
           "rank": 1,
@@ -155,6 +159,7 @@
     },
     {
       "title": "Mi Buenos Aires Querido",
+      "intro": "Detalles porteños que me abrazaron.",
       "items": [
         {
           "rank": 1,

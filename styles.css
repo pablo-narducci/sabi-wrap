@@ -133,19 +133,6 @@ h1{ font-size: clamp(30px, 4vw, 48px); line-height:1.1; margin:0 0 12px; }
   grid-template-columns: repeat(12, 1fr);
   gap:14px;
 }
-.moments-section{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  margin-top:28px;
-}
-.moments-section:first-of-type{
-  margin-top:0;
-}
-.moments-section__title{
-  margin:0;
-  font-size:1.15rem;
-}
 .card{
   grid-column: span 4;
   background: var(--card);

@@ -32,26 +32,39 @@ function renderHero(data) {
   const img = $("#heroImage");
   img.src = data.hero?.image ?? img.src;
   img.alt = data.hero?.imageAlt ?? img.alt;
-  $("#momentsIntro").textContent = data.momentsIntro ?? "";
   $("#closingTitle").textContent = data.closing?.title ?? "Cierre";
   $("#closingText").textContent = data.closing?.text ?? "";
 }
 
 function renderMoments(sections) {
-  const grid = $("#momentsGrid");
-  grid.innerHTML = "";
+  const wrap = $("#momentsSections");
+  wrap.innerHTML = "";
 
   (sections ?? []).forEach((section, sectionIdx) => {
-    const wrap = document.createElement("div");
-    wrap.className = "moments-section";
+    const block = document.createElement("section");
+    block.className = "section";
+    block.id = sectionIdx === 0 ? "momentos" : `momentos-${sectionIdx + 1}`;
 
-    const heading = document.createElement("h3");
-    heading.className = "moments-section__title";
-    heading.textContent = section.title ?? `Top ${sectionIdx + 1}`;
-    wrap.appendChild(heading);
+    const head = document.createElement("div");
+    head.className = "section__head";
 
-    const sectionGrid = document.createElement("div");
-    sectionGrid.className = "grid";
+    const title = document.createElement("h2");
+    title.textContent = section.title ?? `Top ${sectionIdx + 1}`;
+    head.appendChild(title);
+
+    if (section.intro) {
+      const intro = document.createElement("p");
+      intro.className = "muted";
+      intro.textContent = section.intro;
+      head.appendChild(intro);
+    }
+
+    const container = document.createElement("div");
+    container.className = "container";
+    container.appendChild(head);
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
 
     (section.items ?? []).forEach((m, idx) => {
       const card = document.createElement("article");
@@ -72,11 +85,12 @@ function renderMoments(sections) {
           <div class="card__tags">${tags}</div>
         </div>
       `;
-      sectionGrid.appendChild(card);
+      grid.appendChild(card);
     });
 
-    wrap.appendChild(sectionGrid);
-    grid.appendChild(wrap);
+    container.appendChild(grid);
+    block.appendChild(container);
+    wrap.appendChild(block);
   });
 }
 
