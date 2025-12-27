@@ -30,8 +30,11 @@ function renderHero(data) {
   $("#heroTitle").textContent = data.hero?.title ?? "Mi Año en Wrap";
   $("#heroSubtitle").textContent = data.hero?.subtitle ?? "";
   const img = $("#heroImage");
+  const heroLink = $("#heroLightbox");
   img.src = data.hero?.image ?? img.src;
   img.alt = data.hero?.imageAlt ?? img.alt;
+  heroLink.href = data.hero?.image ?? img.src;
+  heroLink.dataset.title = data.hero?.title ?? "Mi Año en Wrap";
   $("#closingTitle").textContent = data.closing?.title ?? "Cierre";
   $("#closingText").textContent = data.closing?.text ?? "";
 }
@@ -75,7 +78,7 @@ function renderMoments(sections) {
       const tags = (m.tags ?? []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
 
       card.innerHTML = `
-        <a class="card__media glightbox" href="${escapeAttr(m.image)}" data-gallery="moments" data-title="${escapeAttr(m.title)}">
+        <a class="card__media glightbox glightbox-moment" href="${escapeAttr(m.image)}" data-gallery="moments" data-title="${escapeAttr(m.title)}">
           <span class="badge">TOP ${escapeHtml(String(m.rank ?? (idx + 1)))}</span>
           <img src="${escapeAttr(m.image)}" alt="${escapeAttr(m.alt ?? m.title)}" loading="lazy" />
         </a>
@@ -151,6 +154,13 @@ function toYouTubeEmbed(url) {
       return id ? `https://www.youtube.com/embed/${id}` : null;
     }
     if (parsed.hostname.includes("youtube.com")) {
+      const pathParts = parsed.pathname.split("/").filter(Boolean);
+      if (pathParts[0] === "shorts" && pathParts[1]) {
+        return `https://www.youtube.com/embed/${pathParts[1]}`;
+      }
+      if (pathParts[0] === "embed" && pathParts[1]) {
+        return `https://www.youtube.com/embed/${pathParts[1]}`;
+      }
       const id = parsed.searchParams.get("v");
       return id ? `https://www.youtube.com/embed/${id}` : null;
     }
@@ -227,7 +237,8 @@ function pickRandomMoment(moments) {
   renderStats(data.stats ?? []);
   renderVideos(data.videos ?? []);
 
-  const lightbox = GLightbox({ selector: ".glightbox", touchNavigation: true, loop: true });
+  const lightbox = GLightbox({ selector: ".glightbox-moment", touchNavigation: true, loop: true });
+  GLightbox({ selector: ".glightbox-hero", touchNavigation: true, loop: true });
 
   $("#shuffleMoment").addEventListener("click", () => {
     const m = pickRandomMoment(allMoments);
