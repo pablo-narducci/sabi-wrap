@@ -104,39 +104,39 @@
       "items": [
         {
           "rank": 1,
-          "title": "Medialunas calientes",
-          "text": "Clásico imbatible con café doble.",
-          "image": "assets/photos/momentos-4-1.jpg",
+          "title": "Merienda con vista al río",
+          "text": "Premio para un día movidito",
+          "image": "assets/photos/momentos 3-1.jpg",
           "alt": "Foto de medialunas",
-          "tags": ["dulce", "café"]
+          "tags": ["Colonia", "El ferry era un samba"]
         },
         {
           "rank": 2,
-          "title": "Tostado perfecto",
-          "text": "Pan crocante y queso que estira.",
-          "image": "assets/photos/momentos-4-2.jpg",
+          "title": "Merienda francesa",
+          "text": "Todo muy rico pero quería más",
+          "image": "assets/photos/momentos 3-2.jpg",
           "alt": "Foto del tostado",
-          "tags": ["salado", "clásico"]
+          "tags": ["Patisserie", "Todo rico"]
         },
         {
           "rank": 3,
-          "title": "Torta de cumple",
-          "text": "Un pedazo de felicidad con velitas.",
-          "image": "assets/photos/momentos-4-3.jpg",
+          "title": "El brunch de las violetas",
+          "text": "Comentario de vieja chota: Ya no es como antes",
+          "image": "assets/photos/momentos 3-3.jpg",
           "alt": "Foto de la torta",
-          "tags": ["cumple", "familia"]
+          "tags": ["Bar notable", "No era jamón. era paleta"]
         }
       ]
     },
     {
-      "title": "Top Naturaleza",
-      "intro": "Oxígeno puro y paisajes que recargan.",
+      "title": "Top flores",
+      "intro": "Momento de apreciar flores que no tuve que cuidar",
       "items": [
         {
           "rank": 1,
           "title": "Sendero con vista",
           "text": "Respirar hondo y mirar lejos.",
-          "image": "assets/photos/momentos-5-1.jpg",
+          "image": "assets/photos/flores1.jpg",
           "alt": "Foto del sendero",
           "tags": ["aire libre", "energía"]
         },
@@ -144,7 +144,7 @@
           "rank": 2,
           "title": "Picnic bajo árboles",
           "text": "Mate, manta y charla tranquila.",
-          "image": "assets/photos/momentos-5-2.jpg",
+          "image": "assets/photos/flores2.jpg",
           "alt": "Foto del picnic",
           "tags": ["verde", "descanso"]
         },
@@ -152,7 +152,7 @@
           "rank": 3,
           "title": "Atardecer en la costa",
           "text": "La mejor paleta de colores del año.",
-          "image": "assets/photos/momentos-5-3.jpg",
+          "image": "assets/photos/flores3.jpg",
           "alt": "Foto del atardecer",
           "tags": ["mar", "cielo"]
         }
