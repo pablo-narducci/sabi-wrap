@@ -38,32 +38,32 @@
       ]
     },
     {
-      "title": "Top Lugares",
-      "intro": "Postales que me marcaron durante el año.",
+      "title": "La naturaleza y yo",
+      "intro": "Haciendo las pases con la Pachamama",
       "items": [
         {
           "rank": 1,
-          "title": "Café escondido",
-          "text": "Mi spot fijo de tardes largas y lluvia suave.",
-          "image": "assets/photos/momentos-2-1.jpg",
+          "title": "La naturaleza está sanando",
+          "text": "Nos aventuramos a un viaje por el Riachuelo",
+          "image": "assets/photos/viajes1.jpg",
           "alt": "Foto del café",
-          "tags": ["café", "pausa"]
+          "tags": ["agua sucia", "no había freeshop"]
         },
         {
           "rank": 2,
-          "title": "Terraza al atardecer",
-          "text": "El mejor golden hour con vista abierta.",
-          "image": "assets/photos/momentos-2-2.jpg",
+          "title": "Hasta acá mi amor a la naturaleza",
+          "text": "foto desde un lugar seguro porque me dió vértigo la escalera \"natural\"",
+          "image": "assets/photos/viajes2.jpg",
           "alt": "Foto de la terraza al atardecer",
-          "tags": ["ciudad", "puesta de sol"]
+          "tags": ["trekking", "había vibóras"]
         },
         {
           "rank": 3,
-          "title": "Biblioteca silenciosa",
-          "text": "Días de foco total y playlists suaves.",
-          "image": "assets/photos/momentos-2-3.jpg",
+          "title": "El gran cañon de Brasil",
+          "text": "Trekking tranca con araucarias de fondo",
+          "image": "assets/photos/viajes3.jpg",
           "alt": "Foto de la biblioteca",
-          "tags": ["work", "calma"]
+          "tags": ["hacía frio", "el cañon tira humo"]
         }
       ]
     },
@@ -134,54 +134,54 @@
       "items": [
         {
           "rank": 1,
-          "title": "Sendero con vista",
-          "text": "Respirar hondo y mirar lejos.",
+          "title": "Jardín botánico de Curitiba",
+          "text": "Donde le ponen Vivaldi a las flores",
           "image": "assets/photos/flores1.jpg",
           "alt": "Foto del sendero",
           "tags": ["aire libre", "energía"]
         },
         {
           "rank": 2,
-          "title": "Picnic bajo árboles",
-          "text": "Mate, manta y charla tranquila.",
+          "title": "Colonia de colores",
+          "text": "Lo que la lluvia nos dejo disfrutar",
           "image": "assets/photos/flores2.jpg",
           "alt": "Foto del picnic",
           "tags": ["verde", "descanso"]
         },
         {
           "rank": 3,
-          "title": "Atardecer en la costa",
-          "text": "La mejor paleta de colores del año.",
+          "title": "Parque de flores",
+          "text": "Recorrimos en carrito de golf 15ha de flores",
           "image": "assets/photos/flores3.jpg",
           "alt": "Foto del atardecer",
-          "tags": ["mar", "cielo"]
+          "tags": ["No maneje", "naturaleza"]
         }
       ]
     },
     {
       "title": "Mi Buenos Aires Querido",
-      "intro": "Detalles porteños que me abrazaron.",
+      "intro": "Porque también en casa se puede turistear",
       "items": [
         {
           "rank": 1,
-          "title": "Callecitas con historia",
-          "text": "Caminar sin rumbo por barrios amados.",
-          "image": "assets/photos/momentos-6-1.jpg",
+          "title": "Palacio Barolo",
+          "text": "Divina vista de la ciudad",
+          "image": "assets/photos/BUE1.jpg",
           "alt": "Foto de calle porteña",
           "tags": ["barrio", "caminata"]
         },
         {
           "rank": 2,
-          "title": "Parque y feria",
-          "text": "Domingos de sol y compras pequeñas.",
+          "title": "Casa de Cataluña",
+          "text": "Con la protección de San Jordi en el teatro Margarita Xirgu",
           "image": "assets/photos/momentos-6-2.jpg",
           "alt": "Foto del parque",
-          "tags": ["domingo", "feria"]
+          "tags": ["cultura", "El Jorge"]
         },
         {
           "rank": 3,
-          "title": "Noche en la avenida",
-          "text": "Luces, movimiento y esa vibra única.",
+          "title": "Bar Roma",
+          "text": "Modesto homenajes a los bares notables y al sifón. Icónos de la identidad porteña",
           "image": "assets/photos/momentos-6-3.jpg",
           "alt": "Foto de noche en Buenos Aires",
           "tags": ["ciudad", "noche"]
